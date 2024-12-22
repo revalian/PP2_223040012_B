@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="model.MahasiswaMapper">
+  <select id="getAllMahasiswa" resultType="model.Mahasiswa">
+    SELECT * FROM mahasiswa
+  </select>
+  <insert id="insertMahasiswa">
+    INSERT INTO mahasiswa (nama, jurusan, tahunMasuk, ipk) VALUES (#{nama}, #{jurusan}, #{tahunMasuk}, #{ipk})
+  </insert>
+  <update id="updateMahasiswa">
+    UPDATE mahasiswa SET nama=#{nama}, jurusan=#{jurusan}, tahunMasuk=#{tahunMasuk}, ipk=#{ipk} WHERE id=#{id}
+  </update>
+  <delete id="deleteMahasiswa">
+    DELETE FROM mahasiswa WHERE id=#{id}
+  </delete>
+</mapper>
