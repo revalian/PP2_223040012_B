@@ -175,13 +175,64 @@ public class MahasiswaView extends JFrame {
         tahunMasukField.setText("");
         ipkField.setText("");
     }
+    
+    private void muatDataMahasiswa() {
+        LoadingFrame loadingFrame = new LoadingFrame();
+        loadingFrame.setVisible(true);
+
+        SwingWorker<Void, Integer> worker = new SwingWorker<>() {
+            @Override
+            protected Void doInBackground() throws Exception {
+                List<Mahasiswa> mahasiswaList = controller.getAllMahasiswa();
+                int progress = 0;
+                for (Mahasiswa mahasiswa : mahasiswaList) {
+                    publish(progress += 100 / mahasiswaList.size());
+                    tableModel.addRow(new Object[]{
+                        mahasiswa.getId(), mahasiswa.getNama(), mahasiswa.getJurusan(), 
+                        mahasiswa.getTahunMasuk(), mahasiswa.getIpk()
+                    });
+                }
+                return null;
+            }
+
+            @Override
+            protected void process(List<Integer> chunks) {
+                int latestProgress = chunks.get(chunks.size() - 1);
+                loadingFrame.setProgress(latestProgress);
+            }
+
+            @Override
+            protected void done() {
+                loadingFrame.dispose();
+                clearFields();
+                JOptionPane.showMessageDialog(MahasiswaView.this, "Data mahasiswa berhasil dimuat!");
+            }
+        };
+
+        tableModel.setRowCount(0); // Clear existing data
+        worker.execute();
+    }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MahasiswaView().setVisible(true);
-            }
+        SwingUtilities.invokeLater(() -> {
+            LoadingFrame loadingFrame = new LoadingFrame();
+            loadingFrame.setVisible(true);
+
+            SwingWorker<Void, Void> worker = new SwingWorker<>() {
+                @Override
+                protected Void doInBackground() throws Exception {
+                    Thread.sleep(2000); // Simulate loading time
+                    return null;
+                }
+
+                @Override
+                protected void done() {
+                    loadingFrame.dispose();
+                    new MahasiswaView().setVisible(true);
+                }
+            };
+
+            worker.execute();
         });
     }
 }

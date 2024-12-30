@@ -5,8 +5,10 @@
         <group>
             <file>file:/D:/LIAN/KULIAH/Semester%205/Praktikum%20Pemrograman%20II/pp2_StudiKasus2/src/model/MahasiswaMapper.xml</file>
             <file>file:/D:/LIAN/KULIAH/Semester%205/Praktikum%20Pemrograman%20II/pp2_StudiKasus2/src/model/Mahasiswa.java</file>
+            <file>file:/D:/LIAN/KULIAH/Semester%205/Praktikum%20Pemrograman%20II/pp2_StudiKasus2/src/view/LoadingFrame.java</file>
             <file>file:/D:/LIAN/KULIAH/Semester%205/Praktikum%20Pemrograman%20II/pp2_StudiKasus2/src/view/MahasiswaView.java</file>
             <file>file:/D:/LIAN/KULIAH/Semester%205/Praktikum%20Pemrograman%20II/pp2_StudiKasus2/src/util/MyBatisUtil.java</file>
+            <file>file:/D:/LIAN/KULIAH/Semester%205/Praktikum%20Pemrograman%20II/pp2_StudiKasus2/src/view/UserPdf.java</file>
             <file>file:/D:/LIAN/KULIAH/Semester%205/Praktikum%20Pemrograman%20II/pp2_StudiKasus2/src/controller/MahasiswaController.java</file>
             <file>file:/D:/LIAN/KULIAH/Semester%205/Praktikum%20Pemrograman%20II/pp2_StudiKasus2/src/util/mybatis-config.xml</file>
         </group>
